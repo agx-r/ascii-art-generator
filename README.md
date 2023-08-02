@@ -69,6 +69,6 @@ The ASCII Art Generator module uses the following third-party libraries:
 
 ## Feedback and Contributions
 
-If you have any feedback, suggestions, or would like to contribute to this project, feel free to [open an issue](https://github.com/yourusername/ascii-art-generator/issues) or [submit a pull request](https://github.com/agx-r/ascii-art-generator/pulls). Your contributions are highly appreciated!
+If you have any feedback, suggestions, or would like to contribute to this project, feel free to [open an issue](https://github.com/agx-r/ascii-art-generator/issues) or [submit a pull request](https://github.com/agx-r/ascii-art-generator/pulls). Your contributions are highly appreciated!
 
 Enjoy creating fascinating ASCII art with the ASCII Art Generator module!
