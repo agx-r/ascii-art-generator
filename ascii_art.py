@@ -1,17 +1,23 @@
 import numpy as np
 from PIL import Image
 
+# Constants
+DEFAULT_ASCII_CHARS = '@%#*+=-:. '
+
 def resize_image(image, new_width=100):
+    """Resize the image while maintaining aspect ratio."""
     width, height = image.size
     ratio = height / width
     new_height = int(new_width * ratio)
     return image.resize((new_width, new_height))
 
 def grayscale_image(image):
+    """Convert the image to grayscale."""
     return image.convert('L')
 
-def image_to_ascii(image, width=100, ascii_chars='@%#*+=-:. '):
-    image = resize_image(image, width)
+def image_to_ascii(image, output_width=100, ascii_chars=DEFAULT_ASCII_CHARS):
+    """Convert the image to ASCII art."""
+    image = resize_image(image, output_width)
     image = grayscale_image(image)
     pixels = np.array(image)
 
@@ -23,21 +29,20 @@ def image_to_ascii(image, width=100, ascii_chars='@%#*+=-:. '):
 
     return ascii_str
 
-def generate_ascii_art(image_path, output_width, ascii_chars='@%#*+=-:. '):
+def generate_ascii_art(input_image_path, output_width=100, ascii_chars=DEFAULT_ASCII_CHARS):
+    """Generate ASCII art from an image file."""
     try:
-        image = Image.open(image_path)
+        image = Image.open(input_image_path)
     except FileNotFoundError:
-        print("Error: The specified image file was not found.")
-        return
+        return "Error: The specified image file was not found."
     except Exception as e:
-        print("Error:", e)
-        return
+        return f"Error: {e}"
 
     ascii_art = image_to_ascii(image, output_width, ascii_chars)
     return ascii_art
 
 if __name__ == '__main__':
-    input_image = 'input_image.jpg'
-    width = 64
-    ascii_art = generate_ascii_art(input_image, width)
+    input_image_path = 'input_image.jpg'
+    output_width = 64
+    ascii_art = generate_ascii_art(input_image_path, output_width)
     print(ascii_art)
